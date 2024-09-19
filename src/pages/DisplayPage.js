@@ -1,19 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
+import { Button } from "antd";
 import TableWrapper from "../components/TableWrapper";
+import NavBar from "../components/NavBar";
 
 const DisplayPage = () => {
   const navigate = useNavigate();
 
   const handleNavigationButton = () => {
     navigate("/inputForm");
-  }
+  };
   return (
-    <div>
-      <Button variant="contained" onClick={handleNavigationButton}>Add New Employee</Button>
+    <div className="home">
+      <NavBar/>
+
       <TableWrapper />
-      
     </div>
   );
 };

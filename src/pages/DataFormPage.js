@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 import EmployeeDataInputForm from '../components/EmployeeDataInputForm';
+import NavBar from '../components/NavBar';
 
 const DataFormPage = () => {
   const navigate = useNavigate();
@@ -18,14 +19,12 @@ const DataFormPage = () => {
   }, [employeeId]);
 
   const handleNavigate = () => {
-    navigate('/');
+    navigate('/displayData');
   };
 
   return (
     <div className='InputFormWrapper'>
-      <div>
-        <Button variant='contained' onClick={handleNavigate}>View All Employees</Button>
-      </div>
+      <NavBar/>
       <EmployeeDataInputForm initialData={initialData} />
     </div>
   );

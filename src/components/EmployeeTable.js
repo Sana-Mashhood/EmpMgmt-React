@@ -56,6 +56,7 @@ const EmployeeTable = () => {
 
   const handleEdit = (employeeId) =>
     console.log("Edit employee with ID:", employeeId);
+  
   const handleDelete = (employeeId) => {
     const storedEmployees = JSON.parse(localStorage.getItem("employees")) || [];
     const updatedEmployees = storedEmployees.filter(employee => employee.employeeId !== employeeId);

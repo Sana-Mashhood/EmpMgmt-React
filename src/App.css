@@ -82,6 +82,32 @@ h2 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the table */
 }
 
+.navbar{
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 10px 20px; 
+  justify-content: center;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.center{
+  flex-grow: 1; 
+  display: flex;
+  justify-content: center;
+}
+
+.home{
+  padding: 50px;
+}
+
 .todo-points {
   outline: none;
   background: none;
