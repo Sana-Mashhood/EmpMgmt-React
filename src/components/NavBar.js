@@ -5,10 +5,10 @@ const items = [
   {
     label: (
       <a href="/">
-        Home
+        Axios Practice
       </a>
     ),
-    key: 'mail',
+    key: 'axiosPractice',
   },
   {
     label: 'Employee Management',
