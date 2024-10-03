@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 import axios from "axios";
 import { Table, Button, Input, Popconfirm, message, Space, Form, Row, Col } from "antd";
 import { DeleteFilled, EditFilled, PlusOutlined } from "@ant-design/icons";
-    
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [editingId, setEditingId] = useState(null);
@@ -162,7 +162,7 @@ const Home = () => {
       <div className="home">
         <h2>We're practicing</h2>
         <Row gutter={[16, 16]}>
-          <Col xs={24} sm={12} md={8} lg={6}>
+          <Col sm={12} md={8} lg={6}>
             <Form layout="vertical" style={{ marginBottom: "20px" }}>
               <Form.Item>
                 <Input
@@ -174,7 +174,7 @@ const Home = () => {
               </Form.Item>
             </Form>
           </Col>
-          <Col xs={24} sm={12} md={8} lg={6}>
+          <Col sm={12} md={8} lg={6}>
             <Form.Item>
               <Input
                 placeholder="Body"
@@ -184,7 +184,7 @@ const Home = () => {
               />
             </Form.Item>
           </Col>
-          <Col xs={24} sm={12} md={8} lg={6}>
+          <Col sm={12} md={8} lg={6}>
             <Form.Item>
               <Input
                 placeholder="User ID"
@@ -194,7 +194,7 @@ const Home = () => {
               />
             </Form.Item>
           </Col>
-          <Col xs={24} sm={12} md={8} lg={6}>
+          <Col sm={12} md={8} lg={6}>
             <Form.Item>
               <Button type="primary" onClick={createNewPost} icon={<PlusOutlined />}>
                 Add Post
@@ -203,14 +203,13 @@ const Home = () => {
           </Col>
         </Row>
 
-        {/* Wrap the table in a scrollable container */}
         <div className="table-container">
           <Table
             dataSource={posts}
             columns={columns}
             rowKey="id"
             pagination={{ position: ["none", "none"] }}
-            scroll={{ x: '100%' }} // Enable horizontal scroll
+            scroll={{ x: '100%' }} 
           />
         </div>
       </div>
