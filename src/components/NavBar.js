@@ -1,55 +1,93 @@
-import React, { useState } from 'react';
-import { Menu } from 'antd';
+import React, { useState } from "react";
+import { Menu, Drawer, Button } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 
 const items = [
   {
-    label: (
-      <a href="/">
-        Axios Practice
-      </a>
-    ),
-    key: 'axiosPractice',
+    label: <a href="/">Axios Practice</a>,
+    key: "axiosPractice",
   },
   {
-    label: 'Employee Management',
-    key: 'EmpMgmt',
+    label: <a href="/dumdums">Dummy Data</a>,
+    key: "dummyData",
+  },
+  {
+    label: "Employee Management",
+    key: "EmpMgmt",
     children: [
       {
-        label: 'Employee List',
+        label: "Employee List",
         children: [
           {
-            label: (
-              <a href="/displayData">
-                View Employee Data
-              </a>
-            ),
-            key: 'displaydata',
+            label: <a href="/displayData">View Employee Data</a>,
+            key: "displaydata",
           },
           {
-            label: (
-              <a href="/inputForm">
-                Add New Employee
-              </a>
-            ),
-            key: 'newemployee',
+            label: <a href="/inputForm">Add New Employee</a>,
+            key: "newemployee",
           },
         ],
       },
     ],
   },
 ];
+
 const NavBar = () => {
-    const [current, setCurrent] = useState('mail');
-    const onClick = (e) => {
-      console.log('click ', e);
-      setCurrent(e.key);
-    };
-    return (
-        <div className='navbar'>
-                <Menu className='center' onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+  const [current, setCurrent] = useState("axiosPractice");
+  const [visible, setVisible] = useState(false);
 
+  const onClick = (e) => {
+    console.log("click ", e);
+    setCurrent(e.key);
+  };
+
+  const showDrawer = () => {
+    setVisible(true);
+  };
+
+  const closeDrawer = () => {
+    setVisible(false);
+  };
+
+  return (
+    <>
+      <div className="navbar-general">
+        <Button
+          className="burger-menu"
+          icon={<MenuOutlined />}
+          onClick={showDrawer}
+        />
+
+        <Drawer
+          title="Menu"
+          placement="right"
+          onClose={closeDrawer}
+          visible={visible}
+        >
+          <Menu
+            onClick={onClick}
+            selectedKeys={[current]}
+            mode="vertical"
+            items={items}
+          />
+        </Drawer>
+
+        <div className="navbar-full">
+          <div className="full-menu">
+            <Menu
+              onClick={onClick}
+              selectedKeys={[current]}
+              mode="horizontal"
+              items={items}
+            />
+          </div>
         </div>
-);
-}
+      </div>
+      <br />
+      <br />
+      <br />
+    </>
+  );
+};
 
-export default NavBar
+export default NavBar;

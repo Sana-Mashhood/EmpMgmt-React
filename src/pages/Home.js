@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import axios from "axios";
-import { Table, Button, Input, Popconfirm, message, Space, Form } from "antd";
+import { Table, Button, Input, Popconfirm, message, Space, Form, Row, Col } from "antd";
 import { DeleteFilled, EditFilled, PlusOutlined } from "@ant-design/icons";
-
+    
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [editingId, setEditingId] = useState(null);
@@ -63,10 +63,8 @@ const Home = () => {
         { title, body, userId },
         { headers: { "Content-Type": "application/json" } }
       );
-      // Add the new post to the state
       setPosts([response.data, ...posts]);
       message.success("New post created successfully!");
-      // Reset the form
       setNewPostData({ title: "", body: "", userId: "" });
     } catch (error) {
       console.log(error);
@@ -151,7 +149,7 @@ const Home = () => {
             okText="Yes"
             cancelText="No"
           >
-            <Button type="danger" style={{ marginLeft: 8 }} icon={<DeleteFilled/>} />
+            <Button type="danger" style={{ marginLeft: 8 }} icon={<DeleteFilled />} />
           </Popconfirm>
         </Space>
       ),
@@ -163,44 +161,58 @@ const Home = () => {
       <NavBar />
       <div className="home">
         <h2>We're practicing</h2>
-        <Form layout="inline" style={{ marginBottom: "20px" }}>
-          <Form.Item>
-            <Input
-              placeholder="Title"
-              name="title"
-              value={newPostData.title}
-              onChange={handleNewPostChange}
-            />
-          </Form.Item>
-          <Form.Item>
-            <Input
-              placeholder="Body"
-              name="body"
-              value={newPostData.body}
-              onChange={handleNewPostChange}
-            />
-          </Form.Item>
-          <Form.Item>
-            <Input
-              placeholder="User ID"
-              name="userId"
-              value={newPostData.userId}
-              onChange={handleNewPostChange}
-            />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" onClick={createNewPost} icon={<PlusOutlined />}>
-              Add Post
-            </Button>
-          </Form.Item>
-        </Form>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form layout="vertical" style={{ marginBottom: "20px" }}>
+              <Form.Item>
+                <Input
+                  placeholder="Title"
+                  name="title"
+                  value={newPostData.title}
+                  onChange={handleNewPostChange}
+                />
+              </Form.Item>
+            </Form>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item>
+              <Input
+                placeholder="Body"
+                name="body"
+                value={newPostData.body}
+                onChange={handleNewPostChange}
+              />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item>
+              <Input
+                placeholder="User ID"
+                name="userId"
+                value={newPostData.userId}
+                onChange={handleNewPostChange}
+              />
+            </Form.Item>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6}>
+            <Form.Item>
+              <Button type="primary" onClick={createNewPost} icon={<PlusOutlined />}>
+                Add Post
+              </Button>
+            </Form.Item>
+          </Col>
+        </Row>
 
-        <Table
-          dataSource={posts}
-          columns={columns}
-          rowKey="id"
-          pagination={{ position: ["none", "none"] }}
-        />
+        {/* Wrap the table in a scrollable container */}
+        <div className="table-container">
+          <Table
+            dataSource={posts}
+            columns={columns}
+            rowKey="id"
+            pagination={{ position: ["none", "none"] }}
+            scroll={{ x: '100%' }} // Enable horizontal scroll
+          />
+        </div>
       </div>
     </div>
   );
