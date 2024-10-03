@@ -51,7 +51,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="navbar-general">
+      <div>
         <Button
           className="burger-menu"
           icon={<MenuOutlined />}
@@ -60,7 +60,7 @@ const NavBar = () => {
 
         <Drawer
           title="Menu"
-          placement="right"
+          placement="left"
           onClose={closeDrawer}
           visible={visible}
         >

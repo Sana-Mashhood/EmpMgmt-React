@@ -86,7 +86,13 @@ h2 {
 }
 
 
-.navbar-general{
+
+.navbar {
+  position: relative;
+}
+
+.full-menu {
+  display: block;
   width: 100%;
   background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
@@ -101,29 +107,23 @@ h2 {
   justify-content: space-between;
   align-items: center;
 }
-.navbar {
-  position: relative;
-}
-
-.full-menu {
-  display: block;
-}
 
 .burger-menu {
   display: none;
 }
 
-/* Media query to hide full menu and show burger icon on small screens */
 @media (max-width: 768px) {
   .full-menu {
     display: none;
   }
   
+  
   .burger-menu {
     display: block;
-    position: absolute;
     right: 10px;
     top: 10px;
+    border-color: transparent;
+    background-color: transparent;
   }
 }
 
